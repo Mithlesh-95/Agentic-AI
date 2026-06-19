@@ -4,12 +4,16 @@ import requests
 import os
 import wikipediaapi
 from openai import OpenAI
+from dotenv import load_dotenv
 
+
+load_dotenv()
 # --------------------------------------------------
 # OpenRouter Client
 # --------------------------------------------------
+
 client = OpenAI(
-    api_key="sk-or-v1-5a7fc7b27c14430b50fe23853a0e07efb6a964dbfc6d61f93392a955fd7a7c7",
+    api_key=os.getenv("OPENAI_API_KEY"),
     base_url="https://openrouter.ai/api/v1"
 )
 
@@ -157,7 +161,7 @@ if query:
     while True:
 
         response = client.chat.completions.create(
-            model="sourceful/riverflow-v2.5-fast",
+            model="google/gemini-2.5-flash",
             messages=st.session_state.messages,
             response_format={"type": "json_object"},
             max_tokens=500
