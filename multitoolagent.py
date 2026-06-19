@@ -161,7 +161,7 @@ if query:
     while True:
 
         response = client.chat.completions.create(
-            model="google/gemini-2.5-flash",
+            model="nex-agi/nex-n2-pro",
             messages=st.session_state.messages,
             response_format={"type": "json_object"},
             max_tokens=500
